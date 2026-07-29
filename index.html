@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5 Star To-Do</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- Button that shows/hides the sidebar on small screens -->
+    <button id="menuToggle" class="menu-toggle" aria-label="Toggle list menu">
+      ☰ <span id="menuToggleLabel">My Tasks</span>
+    </button>
+
+    <!-- SIDEBAR: shows all the to-do lists -->
+    <aside id="sidebar" class="sidebar">
+      <div class="logo">
+        <span class="logo-star">★</span>
+        <h1>5 Star To-Do</h1>
+      </div>
+
+      <p class="sidebar-label">Your Lists</p>
+      <nav id="listNav" class="list-nav"><!-- list buttons are added here by script.js --></nav>
+
+      <form id="newListForm" class="new-list-form">
+        <input
+          type="text"
+          id="newListInput"
+          placeholder="New list name..."
+          maxlength="40"
+          autocomplete="off"
+        />
+        <button type="submit" class="btn-add-list">+ Add List</button>
+      </form>
+    </aside>
+
+    <!-- Overlay used to close the sidebar on mobile when tapping outside it -->
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+    <!-- MAIN CONTENT: the currently selected list's tasks -->
+    <main class="main-content">
+
+      <header class="list-header">
+        <h2 id="currentListName">My Tasks</h2>
+        <button id="deleteListBtn" class="btn-danger-outline">Delete List</button>
+      </header>
+
+      <form id="newTaskForm" class="new-task-form">
+        <input
+          type="text"
+          id="newTaskInput"
+          placeholder="What do you need to do?"
+          maxlength="120"
+          autocomplete="off"
+        />
+        <button type="submit" class="btn-add-task">Add Task</button>
+      </form>
+
+      <p id="errorMessage" class="error-message" hidden></p>
+
+      <ul id="taskList" class="task-list"><!-- task items are added here by script.js --></ul>
+
+      <p id="emptyState" class="empty-state">No tasks yet. Add your first one above! ✨</p>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
