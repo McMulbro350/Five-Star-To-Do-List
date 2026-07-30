@@ -1,0 +1,19 @@
+rules_version = '2';
+
+// These rules make sure every signed-in user can only read and write
+// their OWN to-do data — never anyone else's.
+//
+// How to use this file:
+//   1. In the Firebase console, go to Firestore Database -> Rules
+//   2. Paste this in, replacing whatever is there
+//   3. Click "Publish"
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Each user's lists & tasks live in one document:
+    //   /todoData/{their-user-id}
+    match /todoData/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+  }
+}
